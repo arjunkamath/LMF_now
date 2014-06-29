@@ -20,5 +20,9 @@ var antell_main_url = 'http://www.antell.fi/piilotetut/antell-ravintola-lm-erics
 var antell_menu_url = 'http://www.antell.fi/lounaslistat/lounaslista.html?owner=128';
 
 download(antell_menu_url, function(data){
-  console.log(data);
+  if(data) {
+    console.log(data);
+  }
+  else
+    console.log('Error');
 });
