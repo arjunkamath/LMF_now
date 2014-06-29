@@ -1,4 +1,10 @@
 var http = require("http");
+var cheerio = require("cheerio");
+var fs = require("fs");
+var htmlToText = require('html-to-text');
+
+var fileName = 'antell_text.html';
+var filePath = __dirname + '/' + fileName;
 
 // Utility function that downloads a URL and invokes
 // callback with the data.
@@ -21,8 +27,23 @@ var antell_menu_url = 'http://www.antell.fi/lounaslistat/lounaslista.html?owner=
 
 download(antell_menu_url, function(data){
   if(data) {
-    console.log(data);
+    fs.writeFile(filePath, data, function(err){
+      if(err){
+	console.log(err);
+      }
+      else
+        htmlToText.fromFile((filePath), {
+         // tables: ['#invoice', '.address']
+        }, function(err, text) {
+          if (err) return console.error(err);
+            console.log(text);
+      });
+    });
   }
+    //console.log(data);
+    //var $ = cheerio.load(data);
+    
+  
   else
     console.log('Error');
 });

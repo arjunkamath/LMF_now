@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html class="email-lunchlist" style="width: 100% !important; padding: 0; margin: 0; background-color: #f0eae6;">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="http://www.antell.fi/media/layout/css/lunchlist-print.css" rel="stylesheet" type="text/css" media="print" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script>
+$(function() {
+      
+      $('#lunchlist-page .add_bookmark').click(function() {
+            var page_title = $('.main-title').text();
+            var page_link = document.location;
+            addBookmark2(page_link, page_title);
+            return false;
+      });
+	  
+		var currentList = document.location.href;
+      var urlArray = currentList.split('&bookmark=');
+      if(urlArray[1]) {
+         if(urlArray[1] == 'true') {
+           $('.add_bookmark').click();
+         }
+      }
+	  
+	  if(!document.getElementById('lunch-add-row')) {
+	  	$('table.lunch-ad').hide();
+	  }
+});
+
+function addBookmark2(page_link, page_title) {
+   var bookmark_url = page_link;
+   var text_description = page_title;
+   if (navigator.appName=="Microsoft Internet Explorer" && parseInt(navigator.appVersion) >= 4 && navigator.platform.indexOf("Win") > -1 && navigator.appVersion.indexOf("SlimBrowser") < 0)
+   {
+   window.external.AddFavorite(bookmark_url,text_description);
+   }
+   else
+   {
+   alert('Lisää lounaslista kirjanmerkiksi klikkaamalla Control (Ctrl) ja "D" tai, jos käytät Macia, klikkaamalla Command ja "D" kirjainta.');
+   }
+}
+</script>
+<style>
+
+html.email-lunchlist, .email-lunchlist body, #body_style, #backgroundTable, .ReadMsgBody, .ExternalClass {
+	width: 100% !important;
+	padding: 0;
+	margin: 0;
+	background-color: #f0eae6;
+	-ms-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.email-lunchlist body {
+	background-image: url('http://antell.sivuviidakko.fi/media/layout/images/mail/top-bar-repeat.jpg');
+	background-repeat: repeat-x;
+	background-position: top left;
+}
+
+.email-lunchlist table {
+	border-collapse: collapse; 
+	mso-table-lspace: 0pt; 
+	mso-table-rspace: 0pt;
+}    
+
+/* STYLE NORMAL TEXT HERE */
+.email-lunchlist body, .email-lunchlist td, #body_style, #backgroundTable, .ReadMsgBody, .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div  {
+	font-family: Calibri, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	color: #3f3935;	
+}
+
+
+/* STYLE NORMAL LINKS HERE */
+.email-lunchlist a, .yshortcuts, .yshortcuts a, .yshortcuts a:link, #outlook a {
+	color: #3f3935;
+	text-decoration: none !important;
+	padding: 0;
+} 
+
+a:visited, a:active, a:hover, a:focus, .yshortcuts a:visited, .yshortcuts a:active, .yshortcuts a:hover {
+	text-decoration: underline !important;
+}
+
+/* STYLE MOBILE LINKS HERE */
+@media only screen and (max-device-width: 480px) {
+	a[href^="tel"], a[href^="sms"] {
+		color: #3f3935;
+		text-decoration: none;
+		pointer-events: none;
+	}
+}
+
+/* STYLE TITLES HERE */
+.email-lunchlist h1, .email-lunchlist h2, .email-lunchlist h3, h4, h5, h6 {
+	font-family: 'Droid Serif', Georgia, Times;
+	-webkit-font-smoothing: antialiased;
+}
+
+.email-lunchlist h2 { color: #542e19; font-weight: normal; font-size: 20px; line-height: 24px !important; margin-top: 0; margin-bottom: 10px; }
+.email-lunchlist h3 { color: #3f3935; font-weight: bold; font-size: 20px; line-height: 24px !important; margin-top: 20px; margin-bottom: 10px; }
+.email-lunchlist h4 { color: #542e19; font-weight: normal; font-size: 14px; line-height: 18px !important; }
+.email-lunchlist h5 { color: #542e19; font-weight: normal; font-size: 12px; line-height: 16px !important; }
+.email-lunchlist h6 { color: #542e19; font-weight: normal; font-size: 10px; line-height: 14px !important; }
+
+.email-lunchlist p { margin: 0 0 10px 0; }
+
+
+
+/* IMAGES */ 
+img { 
+	display: block; 
+	outline: none; 
+	text-decoration: none; 
+	-ms-interpolation-mode: bicubic; 
+}
+
+a img { 
+	border: 0; 
+}
+
+/* STYLE LOGO ALT TEXT HERE */
+img.logo {
+	font-family: Times, serif;
+	font-size: 30px; 
+	line-height: 60px;
+}
+
+/* REMOVE SPACE AROUND IMAGES IN EDITOR */
+.flat { 
+	line-height: 100%; 
+}
+.flat br { 
+	font-size: 0; 
+	line-height: 0; 
+}
+
+
+td.lunch-time-cell p {
+	font-size: 12px;
+}
+
+</style>
+</head>
+
+<body style="padding: 0; margin: 0; font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 18px; color: #3f3935; background-color: #f0eae6; background-image: url('http://antell.sivuviidakko.fi/media/layout/images/mail/top-bar-repeat.jpg'); background-repeat: repeat-x; background-position: top left;" id="lunchlist-page">
+<table class="show show5326 outer-table" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6" background="/media/layout/images/mail/top-bar-repeat.jpg" style="border-collapse: collapse; background-image: url('/media/layout/images/mail/top-bar-repeat.jpg'); background-repeat: repeat-x; background-position: top left;">
+<tr>
+<td class="outer" valign="top" align="center">
+
+	<table class="show show5326" width="600" style="border-collapse: collapse; width: 600px !important;" border="0" cellspacing="0" cellpadding="0">
+	<tr class="line">
+		<td colspan="3" align="left" valign="top" style="font-size: 0; line-height: 0;">
+			<img src="http://www.antell.fi/media/layout/images/mail/top-bar.jpg" />	
+		</td>
+	</tr>
+	<tr>
+		<td class="main-logo" width="140" align="left" valign="top" style="font-size: 0; line-height: 0;">
+			<img src="http://www.antell.fi/media/layout/images/mail/logo.jpg" alt="" />
+		</td>
+		<td class="main-title" width="450" align="right" valign="middle" style="font-family: 'Droid Serif', Georgia, Times; color: #542e19 !important;">
+			<span class="title" style="font-size: 24px; line-height: 26px;">Lounaslista vk 27</span><br /><span style="font-size: 18px; line-height: 22px;">30.06.-06.07.2014</span>
+		</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="line">
+		<td colspan="3" style="height: 30px;"><br /></td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+
+<table class="lunch-ad" width="640" style="border-collapse: collapse; width: 640px !important;" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+<tr>
+		<td width="20"></td>
+		<td width="580" colspan="3"><h2 style="text-align: left; font-family: DroidSerif, Georgia, Times; font-weight: normal; color: #542e19 !important; font-size: 20px; line-height: 24px; margin-top: 0; margin-bottom: 10px;">Ajankohtaista ravintoloissamme</h2></td>
+		<td width="20"></td>
+</tr>
+
+
+
+
+
+<table id="lunch-content-table" class="outer-table" width="100%" styel="width: 100% !important; border-collapse: collapse; " border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+<tr>
+<td class="outer" valign="top" align="center">
+	
+	<table class="show show5326" style="border-collapse: collapse; font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 18px; color: #3f3935; width: 600px !important;" width="600" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr>
+		<td width="10"></td>
+		<td width="420" align="left"><h2 style="text-align: left; font-family: 'Droid Serif', Georgia, Times; font-weight: normal; color: #542e19; font-size: 20px; line-height: 24px; margin-top: 0; margin-bottom: 10px;">Maanantai</h2></td>
+		<td width="160"></td>
+		<td width="10"></td>
+	</tr>
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Tomaatti-basilikakanaa / Tomato-bacil chicken
+			<span style="font-size: 12px;"><b>
+				
+					
+						(G, M)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Falafelpyörykät / Falafel
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Juuressosekeitto / Root vegetable soup
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Juustosalaatti / Cheese salad
+			<span style="font-size: 12px;"><b>
+			
+					
+						(VL, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Tonnikalapizza / Tuna pizza
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Marjakiisseliä / Berry fool
+			<span style="font-size: 12px;"><b>
+				
+					
+						(G, M)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	
+	
+	
+	<tr class="line"><td colspan="4" width="600" style="line-height: 0; font-size: 0;"><img src="http://www.antell.fi/media/layout/images/mail/line.jpg" alt="" /></td></tr>
+	</table>
+	
+
+	
+	<table class="show show5326" style="border-collapse: collapse; font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 18px; color: #3f3935; width: 600px !important;" width="600" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr>
+		<td width="10"></td>
+		<td width="420" align="left" valign="middle"><h2 style="text-align: left; font-family: 'Droid Serif', Georgia, Times; font-weight: normal; color: #542e19; font-size: 20px; line-height: 24px; margin-top: 0; margin-bottom: 10px;">Tiistai</h2></td>
+		<td width="160"></td>
+		<td width="10"></td>
+	</tr>
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Lihamureketta / Meatloaf
+			<span style="font-size: 12px;"><b>
+				
+					
+						
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Punajuurikasvispasta / Beetroot-vegetable pasta
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Purjo-perunasosekeitto / Leek-potato soup
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Tonnikala-kananmunasalaatti / Tuna-egg salad
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Kinkkupizza / Ham pizza
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Apelsiinirahka / Orange quark
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	
+	
+	
+	<tr class="line"><td colspan="4" width="600" style="line-height: 0; font-size: 0;"><img src="http://www.antell.fi/media/layout/images/mail/line.jpg" alt="" /></td></tr>
+	</table>
+	
+
+	
+	<table class="show show5326" style="border-collapse: collapse; font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 18px; color: #3f3935; width: 600px !important;" width="600" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr>
+		<td width="10"></td>
+		<td width="420" align="left" valign="middle"><h2 style="text-align: left; font-family: 'Droid Serif', Georgia, Kemes; font-weight: normal; color: #542e19; font-size: 20px; line-height: 24px; margin-top: 0; margin-bottom: 10px;">Keskiviikko</h2></td>
+		<td width="160"></td>
+		<td width="10"></td>
+	</tr>
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Chilikalaa / Chili fish
+			<span style="font-size: 12px;"><b>
+				
+					
+						
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Tandoorikukkakaalia ja riisiä / Tandoori cauliflower
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Tomaattikeittoa / Tomato soup
+			<span style="font-size: 12px;"><b>
+				
+					
+						(G, M)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Kanasalaatti / Chicken salad
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Vuohenjuusto-rucolapizza / Goat cheese-rucola pizza
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Omena-raparperipaistos, vaniljakastike / Apple-rhubarb pie, vanillasauce
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	
+	
+	
+	<tr class="line"><td colspan="4" width="600" style="line-height: 0; font-size: 0;"><img src="http://www.antell.fi/media/layout/images/mail/line.jpg" alt="" /></td></tr>
+	</table>
+	
+
+	
+	<table class="show show5326" style="border-collapse: collapse; font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 18px; color: #3f3935; width: 600px !important;" width="600" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr>
+		<td width="10"></td>
+		<td width="420" align="left" valign="middle"><h2 style="text-align: left; font-family: 'Droid Serif', Georgia, Tomes; font-weight: normal; color: #542e19; font-size: 20px; line-height: 24px; margin-top: 0; margin-bottom: 10px;">Torstai</h2></td>
+		<td width="160"></td>
+		<td width="10"></td>
+	</tr>
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Smetanapossua / Sour cream pork
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Porkkanalettuja / Carrot pancakes
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Kesäkeitto / Summer soup
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Kebabsalaatti / Kebab salad
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Lohipizza / Salmon pizza
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Pannukakkua / Pancake
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	
+	
+	
+	<tr class="line"><td colspan="4" width="600" style="line-height: 0; font-size: 0;"><img src="http://www.antell.fi/media/layout/images/mail/line.jpg" alt="" /></td></tr>
+	</table>
+	
+	
+		
+	<table class="show show5326" style="border-collapse: collapse; font-family: Calibri, Arial, sans-serif; font-size: 14px; line-height: 18px; color: #3f3935; width: 600px !important;" width="600" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr>
+		<td width="10"></td>
+		<td width="420" align="left" valign="middle"><h2 style="text-align: left; font-family: 'Droid Serif', Georgia, Times; font-weight: normal; color: #542e19; font-size: 20px; line-height: 24px; margin-top: 0; margin-bottom: 10px;">Perjantai</h2></td>
+		<td width="160"></td>
+		<td width="10"></td>
+	</tr>
+		<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Sipulihärkää / Onion beef 
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;">*</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Ratatouille
+			<span style="font-size: 12px;"><b>
+				
+					
+						(G, M)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Punajuurikeitto / Beetroot soup
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Savukalasalaatti / Smoked fish salad
+			<span style="font-size: 12px;"><b>
+				
+					
+						(L, G)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Pekoni-kananmuna pizza / Bacon-egg pizza
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	<tr>
+		<td width="10"></td>
+		<td align="left" valign="top">Suklaavaahto / Chocolate foam 
+			<span style="font-size: 12px;"><b>
+				
+					
+						(VL)
+					
+				
+			</b></span>
+		</td>
+		<td align="right" valign="top" style="white-space: nowrap; padding-left: 20px;"></td>
+		<td width="10"></td>
+	</tr>
+	<tr class="space"><td colspan="4" height="5"></td></tr>
+	
+	
+	
+	
+	
+	<tr class="line"><td colspan="4" width="600" style="line-height: 0; font-size: 0;"><img src="http://www.antell.fi/media/layout/images/mail/line.jpg" alt="" /></td></tr>
+	</table>
+	
+	
+	
+
+	
+	
+	<table class="show show5326" width="600" style="border-collapse: collapse; width: 600px !important; font-family: Calibri, Arial, sans-serif; font-size: 12px; line-height: 16px; color: #3f3935 !important;" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr>
+		<td width="10"></td>
+		<td width="580" valign="top" align="left">
+			
+			<b>VL</b> vähälaktoosinen&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>L</b> laktoositon&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>G</b> gluteeniton&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>M</b> maidoton&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Su</b> vähäsuolainen&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Si</b> sipuliton<br>
+			<b>Pa</b> sis. paprikaa&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>O</b> sis. omenaa&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Vs</b> sis. valkosipulia&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Se</b> sis. selleriä&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>Pä</b> sis. pähkinää
+			
+		</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="line"><td colspan="3" width="600" style="line-height: 0; font-size: 0;"><img src="http://www.antell.fi/media/layout/images/mail/line.jpg" alt="" /></td></tr>
+	
+	<tr>
+		<td width="10"></td>
+		<td width="580" valign="top" align="left">Week A'la-Carte: A´la carte tauolla heinäkuun ajan / No a´la carte in July	<br />
+<br />
+<br />
+<br />
+* = ruoka saatavilla paprikattomana, tarkista ravintolasta<br />
+<br />
+* = food available without sweet paprika, please check from the restaurant<br />
+		<br />
+<br />
+<br />
+</td>
+		<td width="10"></td>
+	</tr>
+	<tr class="line"><td colspan="3" width="600" style="line-height: 0; font-size: 0;"><img src="http://www.antell.fi/media/layout/images/mail/line.jpg" alt="" /></td></tr>
+	
+	</table>
+
+
+	
+
+	<table class="lunch-footer-table" width="600" style="border-collapse: collapse; width: 600px !important; font-family: Calibri, Arial, sans-serif; font-size: 12px; line-height: 16px; color: #616365 !important;" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr>
+		<td width="10"></td>
+		<td width="180" valign="top" align="left" style="font-family: Calibri, Arial, sans-serif; font-size: 12px; line-height: 16px; color: #616365;">
+			<span class="restaurant-name" data-restaurant-link="http://www.antell.fi/ravintolat/ravintolahaku/ravintola/antell-ravintola-lm-ericsson-kirkkonummi.html"><b>Antell-ravintola LM Ericsson, Kirkkonummi</b></span><br>
+			Hirsalantie 11 , 02420 Kirkkonummi
+			<br>p. 020 770 2205
+			<br>e-mail: 6320@antell.fi
+		</td>
+		<td width="20"></td>
+		<td width="180" valign="top" align="left"  style="font-family: Calibri, Arial, sans-serif; font-size: 12px; line-height: 16px; color: #616365;">
+<p style="font-size: 12px; line-height: 16px; margin: 0px 0px 10px 0px;">
+<b>Avoinna:</b>
+<br>ma - pe 8.00 - 15.00  <br />
+</p>
+
+
+		</td>
+		<td width="20"></td>
+		<td width="180" valign="top" align="left" class="lunch-time-cell" style="font-family: Calibri, Arial, sans-serif; font-size: 12px; line-height: 16px; color: #616365;">
+			<p><strong>Lounas<br /></strong>ma - pe 11.00 - 13.30<strong><br /></strong></p>
+<p><strong>Aamupala</strong><br />ma - pe 08.00 - 09.30</p>
+		</td>
+		<td width="10"></td>
+	</tr>
+	</table>
+
+<table class="print" width="600" style="border-collapse: collapse; width: 600px !important;" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#f0eae6">
+	<tr><td height="20"></td></tr>
+	<tr>
+		<td width="10"></td>
+		<td width="380" align="right">
+				<a href="#" class="nappi-ruskea add_bookmark" style="font-size: 13px;">Lisää kirjanmerkiksi</a>
+		</td>
+		<td width="120" align="right">
+		<a href="http://www.antell.fi/kerro-kaverille.html" data-list-name="Lounaslista vk 27 | 30.06.-06.07.2014" class="open-friend-form nappi-ruskea" style="font-size: 13px;">Kerro kaverille</a>
+		</td>
+		<td width="80" align="right">
+		<a href="#" class="fancy-print nappi-ruskea" style="font-size: 13px;">Tulosta</a>
+		</td>
+		<td width="10"></td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr><td height="20"></td></tr>
+</table>
+</body>
+</html>

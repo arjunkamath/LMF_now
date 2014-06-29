@@ -1,6 +1,9 @@
 { "name" : "LMF_Now",
   "version" : "0.0.1",
   "description" : "A webpage for displaying relevant information to passersby",
-  "dependencies" :
-  { "cheerio" : "" }
+  "dependencies" : {
+    "cheerio" : "" ,
+    "html-to-text" : ""
+  },
+  "file" : "extract_antell.js"
 } 
